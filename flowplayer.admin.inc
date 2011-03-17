@@ -118,16 +118,14 @@ function flowplayer_admin_settings() {
   $config = array(
     'clip' => array(
       'url' => 'http://pseudo01.hddn.com/vod/demo.flowplayervod/flowplayer-700.flv',
-      'autoPlay' => TRUE,
-      'heigh' => 380,
-      'width' => 640,
+      'autoPlay' => FALSE,
     ),
     'onLoad' => 'flowplayer_admin_init',
   );
   $form['preview'] = array(
     '#type' => 'fieldset',
     '#title' => t('Preview'),
-    '#description' => theme('flowplayer', $config, 'flowplayer-preview'),
+    '#description' => theme('flowplayer', $config, 'flowplayer-preview', array('style' => 'width:640;height:480;')),
     '#attributes' => array('id' => 'flowplayer-preview-wrapper'),
   );
 

@@ -9,7 +9,7 @@
  */
 (function ($) {
   Drupal.behaviors.flowplayeradmin = {
-    attach: function(context, settings) {
+    attach: function(context, settings, object, color) {
       // Update both the Flowplayer preview and the textbox background whenever a textbox gets changed.
       function updateTextBox(color, object) {
         $(object).css({
@@ -18,12 +18,13 @@
         });
 
         var target = $(object).attr('rel');
+        console.log(color);
         var player = $f('flowplayer-preview');
         if (player) {
           player.getControls().css(target, color);
         }
       }
-
+      
       // Create the Farbtastic color picker
       settings.flowplayerAdminFarbtastic = $.farbtastic('#flowplayer-color-picker', function(color) {
         $(settings.flowplayerAdminTextbox).val(color);
