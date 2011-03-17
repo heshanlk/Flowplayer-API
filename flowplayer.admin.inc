@@ -34,7 +34,7 @@ function flowplayer_admin_settings() {
       'scale' => t('Scale: Fill all available space, ignoring metadata'),
     ),
     '#description' => t('The <a href="@options">scaling-property</a> for the video. Scale is the default option.', array('@options' => 'http://flowplayer.org/documentation/configuration/clips.html#scaling')),
-    '#default_value' => variable_get('flowplayer_scaling', 'scale'), 
+    '#default_value' => variable_get('flowplayer_scaling', 'scale'),
   );
 
   // Construct the color picker
@@ -45,14 +45,14 @@ function flowplayer_admin_settings() {
   );
   $form['color']['picker'] = array(
     '#type' => 'markup',
-    '#value' => '<div id="flowplayer-color-picker"></div>',
+    '#markup' => '<div id="flowplayer-color-picker"></div>',
   );
 
   // Add Farbtastic color picker and the Flowplayer administration JS/CSS
   drupal_add_css('misc/farbtastic/farbtastic.css', 'module', 'all', FALSE);
   drupal_add_js('misc/farbtastic/farbtastic.js');
-  drupal_add_js(drupal_get_path('module', 'flowplayer') .'/flowplayer.admin.js');
-  drupal_add_css(drupal_get_path('module', 'flowplayer') .'/flowplayer.admin.css');
+  drupal_add_js(drupal_get_path('module', 'flowplayer') . '/flowplayer.admin.js');
+  drupal_add_css(drupal_get_path('module', 'flowplayer') . '/flowplayer.admin.css');
 
   // The selector controls
   $names = array(
@@ -66,10 +66,10 @@ function flowplayer_admin_settings() {
     'bufferColor' => t('Buffer'),
   );
   foreach ($names as $name => $clean_name) {
-    $form['color']['flowplayer_color_'. $name] = array(
+    $form['color']['flowplayer_color_' . $name] = array(
       '#type' => 'textfield',
       '#title' => $clean_name,
-      '#default_value' => variable_get('flowplayer_color_'. $name, ''),
+      '#default_value' => variable_get('flowplayer_color_' . $name, ''),
       '#size' => 7,
       '#maxlength' => 7,
       '#attributes' => array('rel' => $name),
@@ -117,8 +117,10 @@ function flowplayer_admin_settings() {
   // Create the preview
   $config = array(
     'clip' => array(
-      'url' => 'http://e1h13.simplecdn.net/flowplayer/flowplayer.flv',
+      'url' => 'http://pseudo01.hddn.com/vod/demo.flowplayervod/flowplayer-700.flv',
       'autoPlay' => TRUE,
+      'heigh' => 380,
+      'width' => 640,
     ),
     'onLoad' => 'flowplayer_admin_init',
   );

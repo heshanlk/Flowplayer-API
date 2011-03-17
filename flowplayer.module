@@ -214,7 +214,7 @@ function flowplayer_theme() {
  */
 function theme_flowplayer($config = NULL, $id = 'flowplayer', $attributes = array()) {
   // Prepare the ID.
-  $id = form_clean_id($id);
+  $id = drupal_clean_css_identifier($id);
 
   // Prepare the attributes, passing in the flowplayer class.
   if (isset($attributes['class'])) {
