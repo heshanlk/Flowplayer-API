@@ -9,7 +9,7 @@
  */
 (function ($) {
   Drupal.behaviors.flowplayeradmin = {
-    attach: function(context, settings, object, color) {
+    attach: function(context, settings) {
       // Update both the Flowplayer preview and the textbox background whenever a textbox gets changed.
       function updateTextBox(color, object) {
         $(object).css({
@@ -18,7 +18,6 @@
         });
 
         var target = $(object).attr('rel');
-        console.log(color);
         var player = $f('flowplayer-preview');
         if (player) {
           player.getControls().css(target, color);
@@ -32,7 +31,7 @@
       });
 
       // Make the focus of the textbox change the input box we're acting on.
-      $('#flowplayer-color input:text').focus(function() {
+      $('#flowplayer-color input:text', context).focus(function() {
         settings.flowplayerAdminTextbox = this;
       });
 
