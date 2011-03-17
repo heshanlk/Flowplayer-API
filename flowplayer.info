@@ -1,3 +1,6 @@
-name = Flowplayer
+name = Flowplayer API
 description = Provides integration with the Flowplayer video player.
-core = 6.x
+package = Media
+core = 7.x
+files[] = flowplayer.module
+configure = admin/config/media/flowplayer
