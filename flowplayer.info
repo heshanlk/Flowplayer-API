@@ -1,0 +1,3 @@
+name = Flowplayer
+description = Provides integration with the Flowplayer video player.
+core = 6.x
