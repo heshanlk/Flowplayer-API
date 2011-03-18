@@ -37,7 +37,9 @@
         ];
         jQuery.each(playerEvents, function(index, event) {
           if (typeof(config[event]) == 'string') {
-//            config[event] = eval(config[event]);
+            //            alert(event);
+            console.log(config);
+            config[event] = eval(config[event]);
           }
         });
 

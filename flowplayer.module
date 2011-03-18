@@ -101,7 +101,7 @@ function flowplayer_add($selector = NULL, $config = NULL) {
     // Register the FlowPlayer Drupal behavior so that the elements are processed.
     if (empty($flowplayer_selectors)) {
       // Note that this is only added for the first one added because we only need
-      // it if we are processing through Drupal.settings.flowplayer.
+      // it if we are processing through settings.flowplayer.
       drupal_add_js(drupal_get_path('module', 'flowplayer') . '/flowplayer.js');
     }
 
@@ -212,7 +212,10 @@ function flowplayer_theme() {
  * @param $attributes
  *   (optional) Any additional attributes to associate with the DIV.
  */
-function theme_flowplayer($config = NULL, $id = 'flowplayer', $attributes = array()) {
+function theme_flowplayer($variables) {
+  $config = $variables['config'];
+  $id = $variables['id'];
+  $attributes = $variables['attributes'];
   // Prepare the ID.
   $id = drupal_clean_css_identifier($id);
 

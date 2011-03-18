@@ -120,12 +120,12 @@ function flowplayer_admin_settings() {
       'url' => 'http://pseudo01.hddn.com/vod/demo.flowplayervod/flowplayer-700.flv',
       'autoPlay' => FALSE,
     ),
-    'onLoad' => 'flowplayer_admin_init',
+    'onLoad' => 'flowplayerAdminInit',
   );
   $form['preview'] = array(
     '#type' => 'fieldset',
     '#title' => t('Preview'),
-    '#description' => theme('flowplayer', $config, 'flowplayer-preview', array('style' => 'width:640;height:480;')),
+    '#description' => theme('flowplayer', array('config' => $config, 'id' => 'flowplayer-preview', 'attributes' => array('style' => 'width:640px;height:380px;'))),
     '#attributes' => array('id' => 'flowplayer-preview-wrapper'),
   );
 
