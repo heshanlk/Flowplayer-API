@@ -10,6 +10,45 @@
 (function ($) {
   Drupal.behaviors.flowplayer = {
     attach: function(context, settings) {
+      /**
+       * Called when the Flowplayer is initialized.
+       * Had to move from Drupal.behaviors.flowplayeradmin as this is different namespace
+       */
+      var flowplayerAdminInit = function () {
+        var player = $f('flowplayer-preview');
+        // Colour the text boxes their value color.
+        $('#flowplayer-color input:text').each(function(index, object) {
+          var target = $(object).attr('rel');
+          var color = $(object).val();
+          if (target && color) {
+            player.getControls().css(target, color);
+          }
+        });
+
+        // Controlbar button toggles
+        var buttonToggles = $('#flowplayer-styling input:checkbox');
+        buttonToggles.change(function() {
+          var params = {};
+          buttonToggles.each(function(index, object) {
+            params[this.value] = this.checked;
+          });
+          player.getControls().widgets(params);
+        });
+        buttonToggles.change(); // Update the player to reflect the settings.
+
+        // Border radius
+        $('#edit-flowplayer-border-radius').change(function() {
+          player.getControls().css("borderRadius", $(this).val());
+        });
+        $('#edit-flowplayer-border-radius').change();
+
+        // Background gradient
+        $("#edit-flowplayer-background-gradient").change(function() {
+          player.getControls().css("backgroundGradient", $(this).val());
+        });
+        $("#edit-flowplayer-background-gradient").change();
+      }
+      // onload
       jQuery.each(settings.flowplayer, function(selector, config) {
 
         // Convert any player object events to JavaScript calls.
@@ -37,8 +76,6 @@
         ];
         jQuery.each(playerEvents, function(index, event) {
           if (typeof(config[event]) == 'string') {
-            //            alert(event);
-            console.log(config);
             config[event] = eval(config[event]);
           }
         });
